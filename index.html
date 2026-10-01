@@ -276,16 +276,6 @@ footer{background:var(--ink);color:#8c9ac0;text-align:center;font-size:.85rem;pa
           <li>Enterprise (9.1M) and Government (8.6M) as the top segments, Small Business lowest at 2.9M</li>
           <li>Segment and year slicers, plus a revenue map by country</li>
         </ul>
-        <h4>Sample of the SQL approach</h4>
-<pre><span class="c">-- Illustrative example: year-over-year revenue growth</span>
-<span class="k">WITH</span> yearly <span class="k">AS</span> (
-  <span class="k">SELECT</span> year, <span class="k">SUM</span>(revenue) <span class="k">AS</span> revenue
-  <span class="k">FROM</span> financials <span class="k">GROUP BY</span> year
-)
-<span class="k">SELECT</span> year, revenue,
-  (revenue - <span class="k">LAG</span>(revenue) <span class="k">OVER</span> (<span class="k">ORDER BY</span> year))
-  / <span class="k">LAG</span>(revenue) <span class="k">OVER</span> (<span class="k">ORDER BY</span> year) <span class="k">AS</span> yoy_growth
-<span class="k">FROM</span> yearly;</pre>
       </div>
     </article>
   </div>
